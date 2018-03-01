@@ -1,0 +1,51 @@
+<html>
+<head>
+        <div class="inner">
+            <img src="hkppl.jpg">
+                
+             <h1 style="font-family:verdana",
+                "font-size=200px">
+             DATA NEWS POST
+            </h1>
+            <h1>
+                 Gender Imbalance Worsened
+            </h1>
+            <h2>
+                As reflected in Hong Kong population index, published by Food and Agriculture Organization.
+            </h2>
+             <p>Date: 2nd, March, 2018</p> <p>08:02:30</p>
+            <p>Reporter: Janice, Chan Sui Ping</p> 
+        </div>
+    </head>
+ <body>
+
+    </body>
+    <p>
+        Gender Imbalance worsened. The sex ratio in Hong Kong was enlarged,
+        according to Hong Kong population index,published by Food and Agriculture Organization 
+        of the United Nations. At the same time, the total population in Hong Kong rised correspondingly, to 
+        734 million in the latest report.
+    </p>
+
+        <img src="malefemale.png">
+        <p>Female population has a higher rising rate.</p>
+
+        <img src="bothsexes.png">
+        <p>Female population takes a larger place</p>
+
+    <p> 
+        The rising rate was enlarged year by year. There was 3.62 millions of female population in 2007, and it has been 
+        rised to 3.98 millions in 2017, increased 10% of within 10 years. On the other hand, the rising rate is slower in male 
+        population. There was 3.26 millions of male in 2007, it is rised th 3.39 millions in 2017, increased 4% within the years. 
+        The gender imbalance was enlarged. 
+    </p>
+        <img src="growingrate1.png">
+    <p>
+        Total population grew steadily
+    </p>
+    <p>
+        Total population rate kept rising in Hong Kong. In 2007, the population rate was 6.89 millons. It rised to 7.34 millions 
+        to 7.34 millions in 2017. Total population rised 6.5%. 
+    </p>
+      
+</html>
