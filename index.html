@@ -85,8 +85,23 @@
 						<h2>Study progress</h2>
 						<p>Hong Kong Baptist University, Major in Broadcast Journlism (2016-2020)</p>
 
-						<h2>Journalistic experience</h2>
-						<p>BNN reporter (2018-)</p>
+						<h2>Journalistic Experience</h2>
+    <p id="content">
+    </p>
+    <script>
+    experiences = [{
+        'Date':'Jan 2018-',
+        'Achievement': 'Reporter in BNN',
+    }]
+    o = document.getElementById('content')
+    
+    allItemString = ''
+    for (i = 0; i< experiences.length; i++) {
+        ItemString = '<li>' + experiences[i]['Date'] + ': ' + experiences[i]['Achievement'] +'</li>'
+        allItemString = allItemString + ItemString
+    }
+    o.innerHTML = '<ul>' + allItemString + '</ul>'
+</script>
 
 						<h2>Skills</h2>
 						<p>Language: Native Cantonese, Fluent English and Putonghua</p>
