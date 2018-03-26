@@ -1,0 +1,34 @@
+<p id="content">
+   Janice Chan
+    <a href="www.google.com">some link</a>
+</p>
+
+<script>
+    experiences = [{
+        'title': 'BNN Reporter',
+        'date': '2017-',
+        'location': 'Hong Kong'
+    }, {
+        'title': 'School of communication, Journalism',
+        'date': '2016-2020',
+        'location': 'Hong Kong'
+    
+    }]
+    var o = document.getElementById('content');
+    // o.innerHTML = '<ul><li>Item 1</li><li>Item 2</li></ul>'
+
+    allItemString = '';
+    for (i = 0; i < experiences.length; i++) {
+        console.log(i)
+        itemString =
+            experiences[i]['title'] +
+            ',' +
+            experiences[i]['date'] +
+            ',' +
+            experiences[i]['location']
+        allItemString = allItemString + itemString
+    }
+
+    o.innerHTML = '<ul>' + allItemString + '</ul>';
+    // console.log('it works')
+</script>
