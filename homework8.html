@@ -1,0 +1,299 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Janice Chan</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		
+	</head>
+	<body class="single">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="#">Janice Chan</a></h1>
+						<nav class="links">
+							<ul>
+								<li><a href="#">About Me</a></li>
+								<li><a href="#">Featured Works</a></li>
+								<li><a href="#">Gallery</a></li>
+								<li><a href="#">Contact Me</a></li>
+							</ul>
+						</nav>
+						<nav class="main">
+							<ul>
+								<li class="search">
+									<a class="fa-search" href="#search">Search</a>
+									<form id="search" method="get" action="#">
+										<input type="text" name="query" placeholder="Search" />
+									</form>
+								</li>
+								<li class="menu">
+									<a class="fa-bars" href="#menu">Menu</a>
+								</li>
+							</ul>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<section id="menu">
+
+						<!-- Search -->
+							<section>
+								<form class="search" method="get" action="#">
+									<input type="text" name="query" placeholder="Search" />
+								</form>
+							</section>
+
+						
+							<section>
+								<ul class="actions vertical">
+									<li><a href="#" class="button big fit">Log In</a></li>
+								</ul>
+							</section>
+
+					</section>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<article class="post">
+								<header>
+									<div class="title">
+										<h1><a href="#">香港人真的對政治現況無力嗎？
+											──從Google Trend 看港人如何看兩次補選
+											
+										</a></h1>
+										<p> 過去一個月，各種有關立法會補選的分析百花齊放，不少時事評論員和學者均指出立法會補選投票率低是因為香港人對政治現況無力，也有人指出立法會補選的投票率素來不高，毋需大驚小怪。
+											對比2016年新界東選區的立法會補選，是次補選的政治氛圍較淡，有人將這個現象詮釋為港人政治無力感重。讓Google Trend 告訴我們，港人讓是否關心政治。
+												</p>
+										<p>日期: 2018年4月10日</p> <p>08:02:30</p>
+										<p>記者: 陳萃屏</p>
+									</div>
+									<div class="meta">
+										<time class="published" datetime="2018-04-10">2018-04-10</time>
+										<a href="#" class="author"><span class="name">Janice, Chan Sui Ping</span><img src="images/avatar.jpg" alt="" /></a>
+									</div>
+								</header>
+								<span class="image featured"><img src="election.jpg" alt="" /></span>
+								
+						
+<meta charset="utf-8">
+<style>
+
+/*
+.chart rect {
+  fill: steelblue;
+}
+*/
+.chart .legend {
+  fill: black;
+  font: 14px sans-serif;
+  text-anchor: start;
+  font-size: 12px;
+}
+
+.chart text {
+  fill: white;
+  font: 10px sans-serif;
+  text-anchor: end;
+}
+
+.chart .label {
+  fill: black;
+  font: 14px sans-serif;
+  text-anchor: end;
+}
+
+.bar:hover {
+  fill: brown;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+
+</style>
+<svg class="chart"></svg>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script>
+
+var data = {
+  labels: [
+    '14/2/2016', '21/2/2016', '28/2/2016',
+    '25/2/2018', '4/3/2018', '11/3/2018'
+  ],
+  series: [
+    {
+      label: '補選',
+      values: [19, 34, 69, 8, 32, 100]
+    },
+    {
+      label: '投票',
+      values: [4, 8, 24, 5, 10, 39]
+    },
+    {
+      label: '票站',
+      values: [1, 2, 11, 2, 4, 11]
+    },]
+};
+
+var chartWidth       = 300,
+    barHeight        = 20,
+    groupHeight      = barHeight * data.series.length,
+    gapBetweenGroups = 10,
+    spaceForLabels   = 150,
+    spaceForLegend   = 150;
+
+// Zip the series data together (first values, second values, etc.)
+var zippedData = [];
+for (var i=0; i<data.labels.length; i++) {
+  for (var j=0; j<data.series.length; j++) {
+    zippedData.push(data.series[j].values[i]);
+  }
+}
+
+// Color scale
+var color = d3.scale.category20();
+var chartHeight = barHeight * zippedData.length + gapBetweenGroups * data.labels.length;
+
+var x = d3.scale.linear()
+    .domain([0, d3.max(zippedData)])
+    .range([0, chartWidth]);
+
+var y = d3.scale.linear()
+    .range([chartHeight + gapBetweenGroups, 0]);
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .tickFormat('')
+    .tickSize(0)
+    .orient("left");
+
+// Specify the chart area and dimensions
+var chart = d3.select(".chart")
+    .attr("width", spaceForLabels + chartWidth + spaceForLegend)
+    .attr("height", chartHeight);
+
+// Create bars
+var bar = chart.selectAll("g")
+    .data(zippedData)
+    .enter().append("g")
+    .attr("transform", function(d, i) {
+      return "translate(" + spaceForLabels + "," + (i * barHeight + gapBetweenGroups * (0.5 + Math.floor(i/data.series.length))) + ")";
+    });
+
+// Create rectangles of the correct width
+bar.append("rect")
+    .attr("fill", function(d,i) { return color(i % data.series.length); })
+    .attr("class", "bar")
+    .attr("width", x)
+    .attr("height", barHeight - 1);
+
+// Add text label in bar
+bar.append("text")
+    .attr("x", function(d) { return x(d) - 3; })
+    .attr("y", barHeight / 2)
+    .attr("fill", "red")
+    .attr("dy", ".35em")
+    .text(function(d) { return d; });
+
+// Draw labels
+bar.append("text")
+    .attr("class", "label")
+    .attr("x", function(d) { return - 10; })
+    .attr("y", groupHeight / 2)
+    .attr("dy", ".35em")
+    .text(function(d,i) {
+      if (i % data.series.length === 0)
+        return data.labels[Math.floor(i/data.series.length)];
+      else
+        return ""});
+
+chart.append("g")
+      .attr("class", "y axis")
+      .attr("transform", "translate(" + spaceForLabels + ", " + -gapBetweenGroups/2 + ")")
+      .call(yAxis);
+
+// Draw legend
+var legendRectSize = 18,
+    legendSpacing  = 4;
+
+var legend = chart.selectAll('.legend')
+    .data(data.series)
+    .enter()
+    .append('g')
+    .attr('transform', function (d, i) {
+        var height = legendRectSize + legendSpacing;
+        var offset = -gapBetweenGroups/2;
+        var horz = spaceForLabels + chartWidth + 40 - legendRectSize;
+        var vert = i * height - offset;
+        return 'translate(' + horz + ',' + vert + ')';
+    });
+
+legend.append('rect')
+    .attr('width', legendRectSize)
+    .attr('height', legendRectSize)
+    .style('fill', function (d, i) { return color(i); })
+    .style('stroke', function (d, i) { return color(i); });
+
+legend.append('text')
+    .attr('class', 'legend')
+    .attr('x', legendRectSize + legendSpacing)
+    .attr('y', legendRectSize - legendSpacing)
+    .text(function (d) { return d.label; });
+
+</script>
+
+<P>
+	取自Google Trend 數據。
+</P>
+							
+								<p> 
+									根據Google Trend 的數據，於2018年立法會補選的那個星期（11/3/2018）搜尋關鍵字「補選」、「投票」的港人
+									比起於2016年立法會補選的星期（28/2/2016）均為多。搜尋「補選」的差距最為顯著，2018年的搜尋數為100%，但2016年的
+									搜尋數則為69%，相距31%。而於今年搜尋「投票」的網民也有39%，但於2016年卻只有24%。Google Trend告訴我們，港人於今
+									年是比較在意立法會補選的。
+								</p>
+
+								<p>
+									然而，Google Trend 也指出在兩次補選中，關注投票的人較補選的遠遠較少，而港人搜尋「票站」的數量則更少，顯示港人搜尋「補選」
+									未必想了解投票。從這個網上搜尋行為也可以見得，港人會關注時下發生的事情，但未必會身體力行去投票。可能是因為他們並非合資格選民，
+									也可能是因為他們不會去投票，但此數據落差之確切原因，仍是不得而知。
+								
+								</p>
+							
+								<footer>
+									<ul class="stats">
+										<li><a href="#">Data News</a></li>
+									</ul>
+								</footer>
+							</article>
+
+					</div>
+
+				<!-- Footer -->
+					<section id="footer">
+						<ul class="icons">
+							
+							<li><a href="https://www.facebook.com/suiping.chan.140" class="fa-facebook"><span class="label">Facebook</span></a></li>
+							<li><a href="https://www.instagram.com/janice_csp/" class="fa-instagram"><span class="label">Instagram</span></a></li>
+							<li><a href="#" class="fa-rss"><span class="label">RSS</span></a></li>
+							<li><a href="janice.chansuiping@gmail.com" class="fa-envelope"><span class="label">Email</span></a></li>
+						</ul>
+						<p class="copyright">&copy; Untitled. Design: <a href="http://html5up.net">HTML5 UP</a>. Images: <a href="http://unsplash.com">Unsplash</a>.</p>
+					</section>
+
+			</div>
+		
+	</body>
+</html>
